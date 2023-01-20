@@ -25,6 +25,7 @@ function onConnect() {
 function onConnectionLost(responseObject) {
   if (responseObject.errorCode !== 0) {
     console.log("Connessione Persa:"+responseObject.errorMessage);
+    alert("connessione persa");
   }
 }
 
@@ -34,8 +35,14 @@ function onMessageArrived(message) {
   
   if (message.destinationName == 'shellyplusht-c049ef8dfe50/status/temperature:0') {
     j = JSON.parse(message.payloadString);
-    consolle.log(j)
-    document.getElementById('temperatura').innerText = j.tF
+    console.log(j);
+    document.getElementById("temperatura").innerText = j['tC'] + "°";;
+  }
+
+  if (message.destinationName == 'shellyplusht-c049ef8dfe50/status/humidity:0') {
+    j = JSON.parse(message.payloadString);
+    console.log(j);
+    document.getElementById('umidita').innerText = j['rh'] + "%";
   }
 
   
