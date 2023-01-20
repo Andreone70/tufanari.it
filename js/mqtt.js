@@ -36,7 +36,9 @@ function onMessageArrived(message) {
   if (message.destinationName == 'shellyplusht-c049ef8dfe50/status/temperature:0') {
     j = JSON.parse(message.payloadString);
     console.log(j);
-    document.getElementById("temperatura").innerText = j['tC'] + "°";;
+    document.getElementById("temperatura").innerText = j['tC'] + "°";
+    let now = new Date();
+    document.getElementById("orario").innerText = now
   }
 
   if (message.destinationName == 'shellyplusht-c049ef8dfe50/status/humidity:0') {
